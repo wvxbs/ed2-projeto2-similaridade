@@ -22,6 +22,24 @@ src/main/java/br/mackenzie/ed2
 
 Os textos usados nos testes ficam em `src/test/resources/documentos`.
 
+Para a correção automática, também existe uma cópia dos arquivos Java e dos documentos de teste na raiz do projeto. Isso permite executar exatamente o formato pedido no enunciado.
+
+## Compilação e execução para correção
+
+```bash
+javac *.java && java Main ./documentos 0.7 lista
+```
+
+Outros exemplos no mesmo formato:
+
+```bash
+java Main ./documentos 0.30 lista
+java Main ./documentos 0.30 topK 3
+java Main ./documentos 0.0 busca doc1.txt doc4.txt
+```
+
+A saída também é gravada em `resultado.txt`.
+
 ## Compilação com Maven
 
 ```bash
@@ -29,23 +47,6 @@ mvn compile
 ```
 
 ## Execução com Maven
-
-```bash
-java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 0.30 lista
-java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 0.30 topK 3
-java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 0.0 busca doc1.txt doc4.txt
-```
-
-A saída também é gravada em `resultado.txt`.
-
-## Compilação com javac
-
-```bash
-mkdir -p target/classes
-find src/main/java -name "*.java" -print0 | xargs -0 javac -encoding UTF-8 -d target/classes
-```
-
-## Execução após javac
 
 ```bash
 java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 0.30 lista
