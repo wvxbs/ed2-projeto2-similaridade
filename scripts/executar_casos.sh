@@ -4,8 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
-DOCUMENTOS="${1:-src/test/resources/documentos}"
-MAIN_CLASS="br.mackenzie.ed2.app.Main"
+DOCUMENTOS="${1:-documentos}"
 SAIDA_DIR="target/execucoes"
 
 mkdir -p "$SAIDA_DIR"
@@ -17,14 +16,14 @@ run_case() {
     echo
     echo "============================================================"
     echo "$nome"
-    echo "Comando: java -cp target/classes $MAIN_CLASS $*"
+    echo "Comando: java Main $*"
     echo "============================================================"
 
-    java -cp target/classes "$MAIN_CLASS" "$@" | tee "$SAIDA_DIR/$nome.txt"
+    java Main "$@" | tee "$SAIDA_DIR/$nome.txt"
 }
 
 echo "Compilando o projeto..."
-mvn -q compile
+javac *.java
 
 run_case "01_lista_limiar_030" "$DOCUMENTOS" 0.30 lista
 run_case "02_lista_limiar_050" "$DOCUMENTOS" 0.50 lista

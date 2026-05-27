@@ -11,26 +11,26 @@ Projeto 2 de Estrutura de Dados II.
 ## Estrutura
 
 ```text
-src/main/java/br/mackenzie/ed2
-|-- app             # entrada do programa
-|-- datastructure   # HashTable e AVL
-|-- model           # classes de dados
-|-- service         # fluxo principal de comparação
-|-- similarity      # métricas de similaridade
-`-- text            # leitura e tratamento dos documentos
+.
+|-- Main.java
+|-- Documento.java
+|-- HashTable.java
+|-- AVLTree.java
+|-- documentos/
+`-- scripts/executar_casos.sh
 ```
 
-Os textos usados nos testes ficam em `src/test/resources/documentos`.
+Os arquivos `.java` ficam na raiz para manter compatibilidade com o formato de correção informado no enunciado.
 
-Para a correção automática, também existe uma cópia dos arquivos Java e dos documentos de teste na raiz do projeto. Isso permite executar exatamente o formato pedido no enunciado.
+## Compilação e execução
 
-## Compilação e execução para correção
+Comando principal:
 
 ```bash
 javac *.java && java Main ./documentos 0.7 lista
 ```
 
-Outros exemplos no mesmo formato:
+Outros exemplos:
 
 ```bash
 java Main ./documentos 0.30 lista
@@ -40,24 +40,10 @@ java Main ./documentos 0.0 busca doc1.txt doc4.txt
 
 A saída também é gravada em `resultado.txt`.
 
-## Compilação com Maven
-
-```bash
-mvn compile
-```
-
-## Execução com Maven
-
-```bash
-java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 0.30 lista
-java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 0.30 topK 3
-java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 0.0 busca doc1.txt doc4.txt
-```
-
 ## Execução automatizada
 
 ```bash
 ./scripts/executar_casos.sh
 ```
 
-O script compila o projeto e executa casos de `lista`, `topK` e `busca`. As saídas ficam em `target/execucoes`.
+O script compila com `javac *.java` e executa casos de `lista`, `topK` e `busca`. As saídas ficam em `target/execucoes`.
