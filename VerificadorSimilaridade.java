@@ -12,6 +12,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class VerificadorSimilaridade {
 
@@ -35,13 +37,13 @@ public class VerificadorSimilaridade {
             throw new IllegalArgumentException("Diretorio de documentos invalido: " + diretorio);
         }
 
-        try (var paths = Files.list(diretorio)) {
+        try (Stream<Path> paths = Files.list(diretorio)) {
             List<Path> arquivos = paths
                     .filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().toLowerCase().endsWith(".txt"))
                     .filter(path -> !path.getFileName().toString().equalsIgnoreCase("resultado.txt"))
                     .sorted(Comparator.comparing(path -> path.getFileName().toString()))
-                    .toList();
+                    .collect(Collectors.toList());
 
             if (arquivos.isEmpty()) {
                 throw new IllegalArgumentException("Nenhum arquivo .txt encontrado em: " + diretorio);

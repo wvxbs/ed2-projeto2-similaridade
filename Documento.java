@@ -9,6 +9,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 
 public class Documento {
@@ -30,7 +31,7 @@ public class Documento {
 
         this.arquivo = arquivo;
         this.tabela = new HashTable(hashFunction);
-        processarTexto(Files.readString(arquivo));
+        processarTexto(new String(Files.readAllBytes(arquivo), StandardCharsets.UTF_8));
     }
 
     public String getNome() {
@@ -47,7 +48,7 @@ public class Documento {
                 .replaceAll("[^a-z0-9\\s]", " ");
 
         for (String palavra : textoNormalizado.split("\\s+")) {
-            if (palavra.isBlank() || ehStopWord(palavra)) {
+            if (palavra.trim().isEmpty() || ehStopWord(palavra)) {
                 continue;
             }
 

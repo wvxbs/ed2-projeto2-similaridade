@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,13 +27,13 @@ public class Main {
             return;
         }
 
-        Path diretorio = Path.of(args[0]);
+        Path diretorio = Paths.get(args[0]);
         double limiar = Double.parseDouble(args[1]);
         String modo = args[2].toLowerCase(Locale.ROOT);
         MetricaSimilaridade metrica = MetricaSimilaridade.COSSENO;
         HashFunction hashFunction = HashFunction.POLINOMIAL;
 
-        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Path.of(ARQUIVO_RESULTADO), StandardCharsets.UTF_8))) {
+        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Paths.get(ARQUIVO_RESULTADO), StandardCharsets.UTF_8))) {
             VerificadorSimilaridade verificador = new VerificadorSimilaridade(metrica, hashFunction);
 
             imprimir(writer, "=== VERIFICADOR DE SIMILARIDADE DE TEXTOS ===");
