@@ -47,3 +47,11 @@ A saída também é gravada em `resultado.txt`.
 ```
 
 O script compila com `javac *.java` e executa casos de `lista`, `topK` e `busca`. As saídas ficam em `target/execucoes`.
+
+Ele também pode ser chamado explicitamente por `bash`, `zsh` ou `sh`:
+
+```bash
+zsh scripts/executar_casos.sh
+```
+
+Se o diretório do projeto não permitir escrita, o script usa uma pasta temporária em `/tmp`.
