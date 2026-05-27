@@ -37,3 +37,11 @@ java -cp target/classes br.mackenzie.ed2.app.Main src/test/resources/documentos 
 ```
 
 A saída também é gravada em `resultado.txt`.
+
+## Execução automatizada
+
+```bash
+./scripts/executar_casos.sh
+```
+
+O script compila o projeto e executa casos de `lista`, `topK` e `busca`. As saídas ficam em `target/execucoes`.
