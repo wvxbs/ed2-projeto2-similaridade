@@ -2,3 +2,4 @@ target/
 resultado.txt
 *.class
 .github/modernize/
+documentos_extra/
