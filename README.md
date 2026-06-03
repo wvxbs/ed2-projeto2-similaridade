@@ -47,3 +47,9 @@ A saida tambem é gravada em `resultado.txt`.
 O script compila com `javac *.java` e executa casos de `lista`, `topK` e `busca`. As saidas ficam em `target/execucoes`.
 
 Se o diretorio do projeto nao permitir escrita, o script usa uma pasta temporaria em `/tmp`.
+
+Se o sistema remover a permissao de execucao do script ao extrair o `.zip`, execute com:
+
+```bash
+sh scripts/executar_casos.sh
+```
