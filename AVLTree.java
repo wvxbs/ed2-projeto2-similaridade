@@ -58,6 +58,7 @@ public class AVLTree {
     private AVLNode balance(AVLNode node, RotationInfo info) {
         int balanceFactor = node.getBalanceFactor();
 
+        // Cada caso abaixo corresponde a um desbalanceamento clássico da AVL
         if (balanceFactor > 1 && node.getRight().getBalanceFactor() >= 0) {
             info.incrementarSimples();
             return rotateLeft(node);
@@ -136,6 +137,7 @@ public class AVLTree {
     }
 
     private void topK(AVLNode node, double limiar, int k, List<Resultado> resultados) {
+        // Percorre os maiores valores primeiro para montar o top K
         if (node == null || resultados.size() >= k) {
             return;
         }

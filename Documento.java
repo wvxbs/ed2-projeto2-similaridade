@@ -43,6 +43,7 @@ public class Documento {
     }
 
     private void processarTexto(String texto) {
+        // Normaliza o texto antes de contar as palavras relevantes do documento
         String textoNormalizado = Normalizer.normalize(texto.toLowerCase(), Normalizer.Form.NFD)
                 .replaceAll("\\p{M}", "")
                 .replaceAll("[^a-z0-9\\s]", " ");

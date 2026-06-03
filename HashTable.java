@@ -96,6 +96,7 @@ public class HashTable {
     private int procurarPosicao(String chave, boolean contarColisoes) {
         int indiceInicial = hash(chave);
 
+        // Usa sondagem linear para encontrar a chave ou a próxima posição livre
         for (int tentativa = 0; tentativa < tabela.length; tentativa++) {
             int posicao = (indiceInicial + tentativa) % tabela.length;
 
@@ -132,6 +133,7 @@ public class HashTable {
     private int hashPolinomial(String chave) {
         int hash = 0;
 
+        // Considera a ordem dos caracteres, reduzindo colisões em palavras parecidas
         for (char caractere : chave.toCharArray()) {
             hash = hash * 31 + caractere;
         }
@@ -140,6 +142,7 @@ public class HashTable {
     }
 
     private void rehash() {
+        // Aumenta a tabela quando o fator de carga passa do limite definido
         Entry[] tabelaAntiga = tabela;
         tabela = new Entry[proximoPrimo(tabelaAntiga.length * 2)];
         numElementos = 0;
